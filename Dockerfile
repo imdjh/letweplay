@@ -6,7 +6,7 @@ RUN git clone https://github.com/rauchg/weplay-web /srv/weplay-web && \
 cd /srv/weplay-web && \
 npm install
 
-COPY run.sh /srv
+ADD run.sh /srv/
 RUN npm install forever -g && \
     chmod +x /srv/run.sh
 
