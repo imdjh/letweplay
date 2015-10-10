@@ -10,4 +10,6 @@ COPY run.sh /srv
 RUN npm install forever -g && \
     chmod +x /srv/run.sh
 
+EXPOSE 3000
+
 ENTRYPOINT ["/srv/run.sh"]
