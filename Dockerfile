@@ -1,10 +1,11 @@
 FROM node:0.10
 MAINTAINER Jiahao Dai <dyejarhoo@gmail.com>
 
-
+# Run make generate main.js; not mention in Readme.md
 RUN git clone https://github.com/rauchg/weplay-web /srv/weplay-web && \
 cd /srv/weplay-web && \
-npm install
+npm install && \
+make
 
 ADD run.sh /srv/
 RUN npm install forever -g && \
