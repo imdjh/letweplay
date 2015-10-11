@@ -2,12 +2,12 @@ FROM node:0.10
 MAINTAINER Jiahao Dai <dyejarhoo@gmail.com>
 
 # Run make generate main.js; not mention in Readme.md
-RUN git clone https://github.com/rauchg/weplay-web /srv/weplay-web && \
+RUN git clone https://github.com/imdjh/weplay-web /srv/weplay-web && \
 cd /srv/weplay-web && \
 npm install && \
 make
 
-RUN git clone https://github.com/imdjh/weplay /srv/weplay && \
+RUN git clone https://github.com/rauchg/weplay /srv/weplay && \
 cd /srv/weplay && \
 npm install && \
 npm install forever -g
@@ -18,4 +18,4 @@ RUN chmod +x /entrypoint.sh
 EXPOSE 3001
 EXPOSE 3000
 
-CMD ["entrypoint.sh"]
+CMD ["/entrypoint.sh"]
