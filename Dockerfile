@@ -7,10 +7,15 @@ cd /srv/weplay-web && \
 npm install && \
 make
 
-ADD run.sh /srv/
-RUN npm install forever -g && \
-    chmod +x /srv/run.sh
+RUN git clone https://github.com/imdjh/weplay /srv/weplay && \
+cd /srv/weplay && \
+npm install && \
+npm install forever -g
 
+ADD docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 3001
 EXPOSE 3000
 
-ENTRYPOINT ["/srv/run.sh"]
+CMD ["entrypoint.sh"]
