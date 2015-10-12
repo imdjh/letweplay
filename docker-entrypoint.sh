@@ -1,26 +1,20 @@
 #!/bin/bash
 
 # MAGICs
-export WEPLAY_PORT=3001
 export WEPLAY_WEB_PORT=3000
-export WEPLAY_IO_URL="http://localhost:3001"
-export WEPLAY_SERVER_UID=1337
-export WEPLAY_IP_THROTTLE=50
-
-echo "DEBUG: giving redis related value"
-echo "addr=> ${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}"
-echo "auth=> ${REDIS_PASSWORD}"
-
-echo "DEBUG hard"
-env
+export WEPLAY_IO_URL="http://${ENTRY:-BAD}:3001"
 
 if [[ -n "${REDIS_PORT}" ]];then
     export WEPLAY_REDIS_URI=${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}
+    # REDIS_PASSWORD is daocloud MAGIC
     export WEPLAY_REDIS_AUTH=${REDIS_PASSWORD}
 else
     echo "Redis setting not found, can't start server." >&2 && exit 1
 fi
 
+if ( $(echo ${WEPLAY_IO_URL} | grep -q BAD ) );then
+    echo "ENTRY setting not found, can't start server." >&2 && exit 1
+fi
 
 forever start /srv/weplay-web/index.js
 forever start /srv/weplay/index.js
