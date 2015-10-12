@@ -13,7 +13,7 @@ else
 fi
 
 if ( $(echo ${WEPLAY_IO_URL} | grep -q BAD ) );then
-    echo "ENTRY setting not found, can't start server." >&2 && exit 1
+    echo "IO_URL_PORT is missing, can't start entry server." >&2 && exit 1
 fi
 
 forever start /srv/weplay-web/index.js
