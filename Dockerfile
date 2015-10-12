@@ -3,9 +3,10 @@ MAINTAINER Jiahao Dai <dyejarhoo@gmail.com>
 
 # Run make generate main.js; not mention in Readme.md
 RUN git clone https://github.com/imdjh/weplay-web /srv/weplay-web && \
-cd /srv/weplay-web && \
-npm install && \
-make
+        cd /srv/weplay-web && \
+        npm install && \
+        npm install forever -g && \
+        make
 
 ADD docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

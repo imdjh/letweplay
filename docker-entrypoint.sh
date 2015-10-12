@@ -2,7 +2,7 @@
 
 # MAGICs
 export WEPLAY_WEB_PORT=3000
-export WEPLAY_IO_URL="http://${ENTRY:-BAD}:3001"
+export WEPLAY_IO_URL="${IO_URL_PORT:-BAD}"
 
 if [[ -n "${REDIS_PORT}" ]];then
     export WEPLAY_REDIS_URI=${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}
