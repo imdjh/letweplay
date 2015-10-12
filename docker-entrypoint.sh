@@ -16,8 +16,4 @@ if ( $(echo ${WEPLAY_IO_URL} | grep -q BAD ) );then
     echo "IO_URL_PORT is missing, can't start entry server." >&2 && exit 1
 fi
 
-forever start /srv/weplay-web/index.js
-forever start /srv/weplay/index.js
-
-# MAGIC
-tail -f /root/.forever/*.log
+forever /srv/weplay-web/index.js
