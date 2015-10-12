@@ -7,7 +7,7 @@ cd /srv/weplay-web && \
 npm install && \
 make
 
-RUN git clone https://github.com/weplay/weplay /srv/weplay && \
+RUN git clone https://github.com/imdjh/weplay /srv/weplay && \
 cd /srv/weplay && \
 npm install && \
 npm install forever -g

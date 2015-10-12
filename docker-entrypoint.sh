@@ -15,4 +15,8 @@ else
 fi
 
 
-forever /srv/weplay-web/index.js 
+forever start /srv/weplay-web/index.js
+forever start /srv/weplay/index.js
+
+# MAGIC
+tail -f /root/.forever/*.log
