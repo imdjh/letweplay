@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # MAGICs
-export WEPLAY_WEB_PORT=3000
+export WEPLAY_WEB_PORT=${WEPLAY_WEB_PORT:-3000}
 export WEPLAY_IO_URL="${IO_URL_PORT:-BAD}"
 export NODE_ENV='production'
 
